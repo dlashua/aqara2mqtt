@@ -255,15 +255,19 @@ aqara.on('gateway', gateway => {
 
             case 'wall_switch': {
                 device.on('click', (data) => {
-                    mqttPub(topic + '/left_press', createPayload(data, device));
+                    mqttPub(topic + '/press', createPayload(data, device));
                     pubBattery(topic, device);
                 });
                 device.on('doubleClick', (data) => {
-                    mqttPub(topic + '/left_press_double', createPayload(data, device));
+                    mqttPub(topic + '/press_double', createPayload(data, device));
                     pubBattery(topic, device);
                 });
                 device.on('longClick', (data) => {
-                    mqttPub(topic + '/left_press_long', createPayload(data, device));
+                    mqttPub(topic + '/press_long', createPayload(data, device));
+                    pubBattery(topic, device);
+                });
+                device.on('unknown', (data) => {
+                    mqttPub(topic + '/press_unknown', createPayload(data, device));
                     pubBattery(topic, device);
                 });
                 break;
