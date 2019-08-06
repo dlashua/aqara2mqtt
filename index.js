@@ -255,7 +255,7 @@ aqara.on('gateway', gateway => {
 
             case 'wall_switch': {
                 device.on('click', () => {
-                    mqttPub(topic + '/press', createPayload(true, device));
+                    mqttPub(topic + '/press', createPayload(device._switchChannel, device));
                     pubBattery(topic, device);
                 });
                 device.on('doubleClick', () => {
