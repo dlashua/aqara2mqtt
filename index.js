@@ -255,7 +255,7 @@ aqara.on('gateway', gateway => {
 
             case 'wall_switch': {
                 device.on('left_click', () => {
-                    mqttPub(topic + '/left_press', createPayload(device._switchChannel, device));
+                    mqttPub(topic + '/left_press', createPayload(true, device));
                     pubBattery(topic, device);
                 });
                 device.on('left_doubleClick', () => {
@@ -266,6 +266,31 @@ aqara.on('gateway', gateway => {
                     mqttPub(topic + '/left_press_long', createPayload(true, device));
                     pubBattery(topic, device);
                 });
+                device.on('right_click', () => {
+                    mqttPub(topic + '/right_press', createPayload(true, device));
+                    pubBattery(topic, device);
+                });
+                device.on('right_doubleClick', () => {
+                    mqttPub(topic + '/right_press_double', createPayload(true, device));
+                    pubBattery(topic, device);
+                });
+                device.on('right_longClick', () => {
+                    mqttPub(topic + '/right_press_long', createPayload(true, device));
+                    pubBattery(topic, device);
+                });
+                device.on('both_click', () => {
+                    mqttPub(topic + '/both_press', createPayload(true, device));
+                    pubBattery(topic, device);
+                });
+                device.on('both_doubleClick', () => {
+                    mqttPub(topic + '/both_press_double', createPayload(true, device));
+                    pubBattery(topic, device);
+                });
+                device.on('both_longClick', () => {
+                    mqttPub(topic + '/both_press_long', createPayload(true, device));
+                    pubBattery(topic, device);
+                });
+       
                 break;
             }                
                 
