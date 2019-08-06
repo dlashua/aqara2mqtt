@@ -254,22 +254,26 @@ aqara.on('gateway', gateway => {
             }
 
             case 'wall_switch': {
-                device.on('click', (data) => {
-                    mqttPub(topic + '/press', createPayload(data, device));
+                device.on('button', (data) => {
+                    mqttPub(topic + '/button', createPayload(data, device));
                     pubBattery(topic, device);
                 });
-                device.on('doubleClick', (data) => {
-                    mqttPub(topic + '/press_double', createPayload(data, device));
-                    pubBattery(topic, device);
-                });
-                device.on('longClick', (data) => {
-                    mqttPub(topic + '/press_long', createPayload(data, device));
-                    pubBattery(topic, device);
-                });
-                device.on('unknown', (data) => {
-                    mqttPub(topic + '/press_unknown', createPayload(data, device));
-                    pubBattery(topic, device);
-                });
+//                 device.on('click', (data) => {
+//                     mqttPub(topic + '/press', createPayload(data, device));
+//                     pubBattery(topic, device);
+//                 });
+//                 device.on('doubleClick', (data) => {
+//                     mqttPub(topic + '/press_double', createPayload(data, device));
+//                     pubBattery(topic, device);
+//                 });
+//                 device.on('longClick', (data) => {
+//                     mqttPub(topic + '/press_long', createPayload(data, device));
+//                     pubBattery(topic, device);
+//                 });
+//                 device.on('unknown', (data) => {
+//                     mqttPub(topic + '/press_unknown', createPayload(data, device));
+//                     pubBattery(topic, device);
+//                 });
                 break;
             }                
                 
