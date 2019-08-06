@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/hobbyquaker/aqara2mqtt",
   "dependencies": {
-    "lumi-aqara": "^1.10.0",
+    "lumi-aqara": "dlashua/node-lumi-aqara#0bb1bfa",
     "mqtt": "^2.18.8",
     "mqtt-wildcard": "^3.0.9",
     "yalm": "^4.1.0",
