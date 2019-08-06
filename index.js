@@ -253,6 +253,22 @@ aqara.on('gateway', gateway => {
                 break;
             }
 
+            case 'wall_switch': {
+                device.on('click', () => {
+                    mqttPub(topic + '/press', createPayload(true, device));
+                    pubBattery(topic, device);
+                });
+                device.on('doubleClick', () => {
+                    mqttPub(topic + '/press_double', createPayload(true, device));
+                    pubBattery(topic, device);
+                });
+                device.on('longClick', () => {
+                    mqttPub(topic + '/press_long', createPayload(true, device));
+                    pubBattery(topic, device);
+                });
+                break;
+            }                
+                
             case 'motion': {
                 mqttPub(topic + '/motion', createPayload(Boolean(device.hasMotion()), device), {retain: true});
                 mqttPub(topic + '/brightness', createPayload(device.getLux(), device), {retain: true});
